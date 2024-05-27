@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def create
-    sample = {message: "Hello, world!"}
+    message = "Hello, " + params[:name] + "!"
+    sample = {message: message}
     render json: sample
   end
 end

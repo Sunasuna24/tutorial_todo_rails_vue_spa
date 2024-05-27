@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get '/post', to: 'posts#create'
+  post '/post', to: 'posts#create'
 end
