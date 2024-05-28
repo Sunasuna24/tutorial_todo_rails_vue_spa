@@ -16,3 +16,10 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+	I-Love-Mentaiko:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "これが僕の最初のGitHub Actionsだあああ！"
+      - run: echo "もう誰にも止められないせ！"
+      - run: echo "今日は明太子を食べるぞ"
+      - run: echo "このジョブのステータスは【${{ job.status }}】だよ"
