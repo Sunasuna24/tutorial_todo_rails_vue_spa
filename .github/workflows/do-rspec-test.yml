@@ -10,7 +10,7 @@ jobs:
         ports:
           - 3306:3306
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
         options: --health-cmd "mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 10
     steps:
       - name: Checkout Code
@@ -20,11 +20,14 @@ jobs:
         with:
           ruby-version: '3.3.1'
           bundler-cache: true
-      - name: Database Create
+      - name: Bundler ang Gem Install
+        run |
+          gem install bundler
+          bundle install
+      - name: Create and Migrate Database
         run: |
-          sudo /etc/init.d/mysql start
+          cp config/database.yml.ci config/database.yml
           bundle exec rails db:create RAILS_ENV=test
-      - name: Database Migrate
-        run: bundle exec rails db:migrate RAILE_ENV=test
+          bundle exec rails db:migrate RAILE_ENV=test
       - name: Run Tests
         run: bundle exec rspec
