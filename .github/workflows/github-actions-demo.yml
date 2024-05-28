@@ -16,7 +16,7 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-	I-Love-Mentaiko:
+  I-Love-Mentaiko:
     runs-on: ubuntu-latest
     steps:
       - run: echo "これが僕の最初のGitHub Actionsだあああ！"
