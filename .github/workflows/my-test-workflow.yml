@@ -1,0 +1,11 @@
+name: ${{ github.actor }}'s Very First GitHub Actions
+run-name: I Love 明太子 🍣
+on: [push]
+jobs:
+  Eat-Mentaiko:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "これが僕の最初のGitHub Actionsだあああ！"
+      - run: echo "もう誰にも止められないせ！"
+      - run: echo "今日は明太子を食べるぞ"
+      - run: echo "このジョブのステータスは【${{ job.status }}】だよ"
