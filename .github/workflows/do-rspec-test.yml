@@ -6,7 +6,7 @@ jobs:
     timeout-minutes: 10
     services:
       mysql:
-        image: mysql8.0
+        image: mysql:8.0
         ports:
           - 3306:3306
         env:
@@ -18,7 +18,7 @@ jobs:
       - name: Setup Ruby Env
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.1
+          ruby-version: '3.3.1'
           bundler-cache: true
       - name: Database Create
         run: bundle exec rails db:create RAILS_ENV=test
