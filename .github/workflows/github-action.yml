@@ -2,6 +2,7 @@ name: "GitHub Actions"
 on:
 	push:
 	pull_request:
+		- master
 jobs:
 	first-github-actions:
 		name: hello github actions job
