@@ -10,45 +10,38 @@ RSpec.describe Post, type: :model do
   end
   
   it "is not valid when there is no title" do
-    # post = FactoryBot.create(:post, title: nil, user: user)
-    post_info = {
-      body: "This is a body of a test post.",
-      user_id: user.id
-    }
-    post = Post.create(post_info)
+=begin
+Railsのcreate()とfactory_botのcreate()の違いが分からない。
+=end
+    # post_info = {
+    #   body: "This is a body of a test post.",
+    #   user_id: user.id
+    # }
+    # post = Post.create(post_info)
+
+    post = FactoryBot.build(:post, title: nil, user: user)
+    post.valid?
 
     expect(post).to be_invalid
-    # expect(FactoryBot.create(:post, title: nil, user: user)).to be_invalid
   end
 
   it "is not valid when there title is empty" do
-    post_info = {
-      title: "",
-      body: "This is a body of a test post.",
-      user_id: user.id
-    }
-    post = Post.create(post_info)
+    post = FactoryBot.build(:post, title: "", user: user)
+    post.valid?
 
     expect(post).to be_invalid
   end
 
   it "is not valid when there is no body" do
-    post_info = {
-      title: "My Title",
-      user_id: user.id
-    }
-    post = Post.create(post_info)
+    post = FactoryBot.build(:post, body: nil, user: user)
+    post.valid?
 
     expect(post).to be_invalid
   end
 
   it "is not valid when there is no body" do
-    post_info = {
-      title: "My Title",
-      body: "",
-      user_id: user.id
-    }
-    post = Post.create(post_info)
+    post = FactoryBot.build(:post, body: "", user: user)
+    post.valid?
 
     expect(post).to be_invalid
   end
