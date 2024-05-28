@@ -17,6 +17,7 @@ development:
 test:
   <<: *default
   database: <%= ENV['DATABASE_TEST_NAME'] %>
+  host: <%= ENV['DATABASE_TEST_HOST'] %>
 
 production:
   <<: *default
