@@ -1,0 +1,13 @@
+name: New File
+run-name: 
+on: [push]
+jobs:
+  My-First-Job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello, world!"
+  Second-Job:
+    runs-on: ubuntu-latest
+    needs: My-First-Job
+    steps:
+      - run: echo "Hello, GitHub Actions"
