@@ -4,6 +4,7 @@ RSpec.describe "Posts", type: :request do
 
   describe "GET /posts" do
     let(:post_number) { 5 }
+
     before do
       create_list(:post, post_number)
       get '/posts'
