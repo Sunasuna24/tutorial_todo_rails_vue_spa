@@ -1,4 +1,12 @@
 class PostsController < ApplicationController
+  def test
+    data = {
+      message: 'This message was returned from Rails API server!'
+    }
+
+    render json: data
+  end
+
   def create
     user_id = 1 # 後に動的にしたい
     title = params[:title]
