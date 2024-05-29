@@ -22,4 +22,10 @@ class PostsController < ApplicationController
 
     render json: post
   end
+
+  def all
+    posts = Post.all
+
+    render json: posts
+  end
 end
