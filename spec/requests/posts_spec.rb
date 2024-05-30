@@ -50,20 +50,28 @@ RSpec.describe "Posts", type: :request do
   describe "PATCH /posts/:id" do
     let(:old_post) { create(:post) }
 
-    it "updates a post" do
-      data = {
-        title: "New Title",
-        body: "This is a brand new post! Hope you enjoy it!"
-      }
+    context "when both title and body are given" do
+      it "updates a post" do
+        data = {
+          title: "New Title",
+          body: "This is a brand new post! Hope you enjoy it!"
+        }
 
-      patch "/posts/#{old_post.id}", params: data
+        patch "/posts/#{old_post.id}", params: data
 
-      expect(response).to have_http_status(200)
+        expect(response).to have_http_status(200)
 
-      updated_post = Post.find(old_post.id)
+        updated_post = Post.find(old_post.id)
 
-      expect(updated_post.title).to eq(data[:title])
-      expect(updated_post.body).to eq(data[:body])
+        expect(updated_post.title).to eq(data[:title])
+        expect(updated_post.body).to eq(data[:body])
+      end
+    end
+
+    context "" do
+      it "" do
+        # 
+      end
     end
   end
 end
