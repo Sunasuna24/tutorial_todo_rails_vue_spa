@@ -20,4 +20,20 @@ RSpec.describe "Posts", type: :request do
       expect(posts.size).to eq(post_number)
     end
   end
+
+  describe "GET /posts/:id" do
+    let(:post) { create(:post) }
+
+    it "returns a single post" do
+      id = post.id
+      get "/posts/#{id}"
+
+      expect(response).to have_http_status(200)
+
+      response_post = JSON.parse(response.body)
+      new_post = Post.new(response_post)
+
+      expect(new_post).to eq(post)
+    end
+  end
 end
