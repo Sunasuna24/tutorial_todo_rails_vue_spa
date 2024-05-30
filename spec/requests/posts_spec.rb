@@ -46,4 +46,23 @@ RSpec.describe "Posts", type: :request do
       expect(Post.find_by(id: post.id)).to eq(nil)
     end
   end
+
+  describe "PATCH /posts/:id" do
+    let(:old_post) { create(:post) }
+
+    it "updates a post" do
+      data = {
+        title: "New Title",
+        body: "This is a brand new post! Hope you enjoy it!"
+      }
+      patch "/posts/#{old_post.id}", params: data
+
+      expect(response).to have_http_status(200)
+
+      updated_post = Post.find(old_post.id)
+
+      expect(updated_post.title).to eq(data[:title])
+      expect(updated_post.body).to eq(data[:body])
+    end
+  end
 end

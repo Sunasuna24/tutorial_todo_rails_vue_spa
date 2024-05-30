@@ -40,4 +40,12 @@ class PostsController < ApplicationController
 
     render status: 200
   end
+
+  def update
+    title = params[:title]
+    body = params[:body]
+    post = Post.update(params[:id], {title: title, body: body})
+
+    render json: post
+  end
 end
