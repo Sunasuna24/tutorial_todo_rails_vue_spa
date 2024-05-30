@@ -36,4 +36,14 @@ RSpec.describe "Posts", type: :request do
       expect(new_post).to eq(post)
     end
   end
+
+  describe "DELETE /posts/:id" do
+    let(:post) { create(:post) }
+
+    it "deletes a post" do
+      delete "/posts/#{post.id}"
+
+      expect(Post.find_by(id: post.id)).to eq(nil)
+    end
+  end
 end

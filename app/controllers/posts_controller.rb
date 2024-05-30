@@ -34,4 +34,10 @@ class PostsController < ApplicationController
 
     render json: post
   end
+
+  def destroy
+    Post.delete(params[:id])
+
+    render status: 200
+  end
 end
